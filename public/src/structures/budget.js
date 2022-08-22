@@ -1,6 +1,6 @@
 class budget
 {
-    constructor(name = "N/A", description = "N/A", allocatedCost = 0.0)
+    constructor(name = "N/A", description = "N/A", allocatedCost = 0.0, renewDate = "dd-mm-yyyy", parentBudgId = null)
     {
         this.id = randId();
         this.name = name;
@@ -8,22 +8,37 @@ class budget
         this.allocatedCost = allocatedCost;
         this.currentCost = 0.0;
         this.renewDate = renewDate;
-        this.subBudgets = [];
-        this.expenses = [];
+        this.subBudgIds = [];
+        this.expenseIds = [];
+        this.parentBudgId = parentBudgId;
     }
 
     calcCurrent()
     {
         this.currentCost = 0;
-        for(i = 0; i < this.subBudgets.length; i++)
+        for(let i = 0; i < this.subBudgets.length; i++)
         {
-            this.subBudgets[i].calcCurrent();
-            this.currentCost+=this.subBudgets[i].currentCost;
+            let currBudg = searchId(budgets, this.subBudgIds[i]);
+            currBudg.calcCurrent();
+            this.currentCost+=currBudg.currentCost;
         }
-        for(i = 0; i < this.expenses.length; i++)
+        for(let i = 0; i < this.expenses.length; i++)
         {
-            this.currentCost+=this.expenses[i].cost;
+            this.currentCost+=searchId(expenses, this.expenses[i].id).cost;
         }
-
     }
+
+    parent()
+    {
+        return searchId(budgets, this.parentBudgId);
+    }
+
+    // children()
+    // {
+    //     let temparray  = [];
+    //     for(let i = 0; i < this.subBudgIds.length;i++ )
+    //     {
+    //         if (budgets[i].id = this.subBudgIds[i].id)temparray.push()
+    //     }
+    // }
 }

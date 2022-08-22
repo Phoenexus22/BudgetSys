@@ -21,3 +21,11 @@ function randb64(length) {
     }
     return result;
 }
+
+function searchId(sourceArray = [], id = null)
+{
+    for (let i = 0; i < sourceArray.length; i++)
+    {
+        if (sourceArray[i].id == id) return sourceArray[i];
+    }
+}
