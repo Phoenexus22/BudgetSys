@@ -1,6 +1,6 @@
-function startBudgetListener()
+async function startBudgetListener()
 {
-   db.collection("budgets").onSnapshot((snapshot) => { // event that runs when database is changed
+   await db.collection("budgets").onSnapshot((snapshot) => { // event that runs when database is changed
         budgets.length=0;
         snapshot.forEach((doc) => {
             const object = new budget(doc.data().name, doc.data().description, doc.data().allocatedCost, doc.data().renewDate, doc.data().parentBudgId);
@@ -15,9 +15,9 @@ function startBudgetListener()
   })
 }
 
-function startExpenseListener()
+async function startExpenseListener()
 {
-    db.collection("expenses").onSnapshot((snapshot) => { // event that runs when database is changed
+    await db.collection("expenses").onSnapshot((snapshot) => { // event that runs when database is changed
         expenses.length=0;
         snapshot.forEach((doc) => {
             const object = new expense(doc.data().name, doc.data().description, doc.data().cost, doc.data().to, doc.data().date, doc.data().signatory, doc.data().budgId);

@@ -13,7 +13,7 @@ class budget
         this.parentBudgId = parentBudgId;
     }
 
-    calcCurrent()
+    async calcCurrent()
     {
         this.currentCost = 0;
         for(let i = 0; i < this.children().length; i++)
@@ -22,11 +22,12 @@ class budget
             currBudg.calcCurrent();
             this.currentCost+=currBudg.currentCost;
         }
+        console.log(this.expenses());
         for(let i = 0; i < this.expenses().length; i++)
         {
             this.currentCost+=this.expenses()[i].cost;
         }
-        this.firesend();
+        await this.firesend();
     }
 
     parent()
@@ -44,12 +45,13 @@ class budget
         return temparray;
     }
 
-    addChild(child)
+    async addChild(child)
     {
         this.subBudgIds.push(child.id);
         child.parentBudgId = this.id;
-        child.firesend();
-        this.firesend();
+        await child.firesend();
+        await this.firesend();
+        await this.calcCurrent();
     }
 
     expenses()
@@ -62,18 +64,19 @@ class budget
         return temparray;
     }
 
-    addExpense(expense)
+    async addExpense(expense)
     {
         this.expenseIds.push(expense.id);
         expense.budgId = this.id;
-        expense.firesend()
-        this.firesend()
+        await expense.firesend();
+        await this.firesend();
+        await this.calcCurrent();//this is running before the expense firesend fully fixes itself
     }
 
 
-    firesend()
+    async firesend()
     {
-        db.collection("budgets").doc(this.id).set(
+        await db.collection("budgets").doc(this.id).set(
         {
             id: this.id,
             name: this.name,
