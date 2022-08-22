@@ -1,2 +1,5 @@
+const db = firebase.firestore();
 var budgets = [];
-var expenses = [];//references of expenses in budgets
+var expenses = [];
+startBudgetListener();
+startExpenseListener();

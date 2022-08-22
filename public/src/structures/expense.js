@@ -11,4 +11,30 @@ class expense
         this.signatory = signatory;
         this.budgID = budgID;
     }
+
+    parent()
+    {
+        return searchId(budgets, this.budgId);
+    }
+
+    firesend()
+    {
+        db.collection("expenses").doc(this.id).set(
+        {
+            id: this.id,
+            name: this.name,
+            description: this.description,
+            cost: this.cost,
+            to: this.to,
+            date: this.date,
+            signatory: this.signatory,
+            budgId: this.budgId
+
+        }).then(() => 
+        {
+            console.log("Document successfully written!");
+        }).catch((error) => {
+            console.error("Error writing document: ", error);
+         });
+    }
 }
