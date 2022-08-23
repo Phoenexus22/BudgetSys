@@ -1,5 +1,6 @@
 class expense
 {
+    //used to create the fields of budget object 
     constructor(name = "N/A", description = "N/A", cost = 0.0, to = "Undisclosed", signatory = "Undisclosed", timestamp = Date.now(), budgeID = null)
     {
         this.id = randId();
@@ -12,6 +13,7 @@ class expense
         this.budgId = budgeID;
     }
 
+    //removes this class and all refrences to it
     delete()
     {
         this.parent().expenseIds.splice(this.indexInParent(), 1);
@@ -25,6 +27,7 @@ class expense
       });
     }
 
+    //returns the parent of the parent of the... you get the idea
     primeParent()
     {
         let parentAcc = this;
@@ -37,6 +40,7 @@ class expense
         return parentAcc
     }
 
+    //returns the index of this objects id in the parent's subBudgIds
     indexInParent()
     {
         let parentChildren = this.parent().expenses();
@@ -48,6 +52,7 @@ class expense
     
     
 
+    //returns the parent object of this budget, defined by the budgId
     parent()
     {
         return searchId(budgets, this.budgId);

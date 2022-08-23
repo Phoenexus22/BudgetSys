@@ -11,7 +11,7 @@ async function startBudgetListener()
 
             budgets.push(object);//adding all documents into array
       })
-      //redo html
+      budgetReload();
   })
 }
 
@@ -24,6 +24,6 @@ async function startExpenseListener()
             object.id = doc.data().id;
             expenses.push(object);//adding all documents into array
       })
-      //redo html
+      expenseReload();
   })
 }

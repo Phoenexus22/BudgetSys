@@ -1,5 +1,7 @@
 class budget
 {
+
+    //used to create the fields of budget object 
     constructor(name = "N/A", description = "N/A", allocatedCost = 0.0, renewDate = "dd-mm-yyyy", parentBudgId = null)
     {
         this.id = randId(budgets);
@@ -13,6 +15,7 @@ class budget
         this.parentBudgId = parentBudgId;
     }
 
+    //calculates the cost of this budget and all sub budgets
     async calcCurrent()
     {
         this.currentCost = 0;
@@ -30,27 +33,22 @@ class budget
         await this.firesend();
     }
 
+
+    //returns true when current cost is less than allocated cost
     inBlack()
     {
         return (this.currentCost <= this.allocatedCost);
     }
 
 
+
+    //returns the parent object of this budget, defined by the parentBudgId
     parent()
     {
         return searchId(budgets, this.parentBudgId);
     }
 
-    children()
-    {
-        let temparray  = [];
-        for(let i = 0; i < this.subBudgIds.length;i++ )
-        {   
-            temparray.push(searchId(budgets, this.subBudgIds[i]));      
-        }
-        return temparray;
-    }
-
+    //returns the parent of the parent of the... you get the idea
     primeParent()
     {
         let parentAcc = this;
@@ -63,6 +61,29 @@ class budget
         return parentAcc
     }
 
+    //returns the index of this objects id in the parent's subBudgIds
+    indexInParent()
+    {
+        let parentChildren = this.parent().children();
+        for(let i = 0; i < parentChildren.length; i++)
+        {
+            if(parentChildren[i].id == this.id) return i;
+        }
+    }
+
+
+    //returns the array of children for this object
+    children()
+    {
+        let temparray  = [];
+        for(let i = 0; i < this.subBudgIds.length;i++ )
+        {   
+            temparray.push(searchId(budgets, this.subBudgIds[i]));      
+        }
+        return temparray;
+    }
+
+    //adds a subbudget to a budget
     async addChild(child)
     {
         this.subBudgIds.push(child.id);
@@ -72,6 +93,18 @@ class budget
         await this.primeParent().calcCurrent();
     }
 
+    //removes all subbudgets
+    purgeChildren()
+    {
+        let children = this.children();
+        for (let i = 0; i < children.length; i++)
+        {
+            children[i].delete()
+        }
+    }
+
+
+    //returns the array of expenses for this object 
     expenses()
     {
         let temparray  = [];
@@ -82,6 +115,7 @@ class budget
         return temparray;
     }
 
+    //adds an expense to this budget
     async addExpense(expense)
     {
         this.expenseIds.push(expense.id);
@@ -91,19 +125,21 @@ class budget
         await this.primeParent().calcCurrent();//this is running before the expense firesend fully fixes itself
     }
 
-
-    delete()
+    //removes all expenses from this budget
+    purgeExpenses()
     {
         let expenses = this.expenses();
-        let children = this.children();
         for (let i = 0; i < expenses.length; i++)
         {
             expenses[i].delete();
         }
-        for (let i = 0; i < children.length; i++)
-        {
-            children[i].delete()
-        }
+    }
+
+    //removes all reference to this budget, and deletes its children and expenses
+    delete()
+    {
+        this.purgeExpenses();
+        this.purgeChildren();
         if(this.parent()) this.parent().subBudgIds.splice(this.indexInParent(), 1);
         this.primeParent().calcCurrent();
         db.collection("budgets").doc(this.id).delete().then(() => {
@@ -115,15 +151,7 @@ class budget
       });
     }
 
-    indexInParent()
-    {
-        let parentChildren = this.parent().children();
-        for(let i = 0; i < parentChildren.length; i++)
-        {
-            if(parentChildren[i].id == this.id) return i;
-        }
-    }
-
+    //send the copy of this object to the database
     async firesend()
     {
         await db.collection("budgets").doc(this.id).set(

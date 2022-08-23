@@ -1,3 +1,4 @@
+//returns an array of only the elements with a parent id of null
 Array.prototype.primeParents = function(){
     let accArray = [];
     for (let i = 0; i < this.length; i++)
@@ -7,6 +8,7 @@ Array.prototype.primeParents = function(){
     return accArray;
 }
 
+//sorts the array bay name (ascending)
 Array.prototype.sortByName = function()
 {
     try{
@@ -26,7 +28,7 @@ Array.prototype.sortByName = function()
         console.error("Array elements have no field name");
     }
 }
-
+//sorts the array by timestamp (ascending)
 Array.prototype.sortByTimestamp = function()
 {
     try{
