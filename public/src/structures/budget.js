@@ -30,6 +30,12 @@ class budget
         await this.firesend();
     }
 
+    inBlack()
+    {
+        return (this.currentCost <= this.allocatedCost);
+    }
+
+
     parent()
     {
         return searchId(budgets, this.parentBudgId);
@@ -45,13 +51,25 @@ class budget
         return temparray;
     }
 
+    primeParent()
+    {
+        let parentAcc = this;
+        let parentTst = this.parent();
+        while (parentTst)
+        {
+            parentAcc = parentAcc.parent();
+            parentTst = parentTst.parent();
+        }
+        return parentAcc
+    }
+
     async addChild(child)
     {
         this.subBudgIds.push(child.id);
         child.parentBudgId = this.id;
         await child.firesend();
         await this.firesend();
-        await this.calcCurrent();
+        await this.primeParent().calcCurrent();
     }
 
     expenses()
@@ -70,9 +88,41 @@ class budget
         expense.budgId = this.id;
         await expense.firesend();
         await this.firesend();
-        await this.calcCurrent();//this is running before the expense firesend fully fixes itself
+        await this.primeParent().calcCurrent();//this is running before the expense firesend fully fixes itself
     }
 
+
+    delete()
+    {
+        let expenses = this.expenses();
+        let children = this.children();
+        for (let i = 0; i < expenses.length; i++)
+        {
+            expenses[i].delete();
+        }
+        for (let i = 0; i < children.length; i++)
+        {
+            children[i].delete()
+        }
+        if(this.parent()) this.parent().subBudgIds.splice(this.indexInParent(), 1);
+        this.primeParent().calcCurrent();
+        db.collection("budgets").doc(this.id).delete().then(() => {
+            //runs on success
+          console.log(this.id + " successfully deleted!");
+        }).catch((error) => {
+            //runs on failure
+          console.error("Error removing document: ", error);
+      });
+    }
+
+    indexInParent()
+    {
+        let parentChildren = this.parent().children();
+        for(let i = 0; i < parentChildren.length; i++)
+        {
+            if(parentChildren[i].id == this.id) return i;
+        }
+    }
 
     async firesend()
     {

@@ -1,13 +1,13 @@
 class expense
 {
-    constructor(name = "N/A", description = "N/A", cost = 0.0, to = "Undisclosed", date = "dd-mm-yyyy", signatory = "Undisclosed", budgeID = null)
+    constructor(name = "N/A", description = "N/A", cost = 0.0, to = "Undisclosed", signatory = "Undisclosed", timestamp = Date.now(), budgeID = null)
     {
         this.id = randId();
         this.name = name;
         this.description = description;
         this.cost = cost;
         this.to = to;
-        this.date = date;
+        this.timestamp = timestamp;
         this.signatory = signatory;
         this.budgId = budgeID;
     }
@@ -15,7 +15,7 @@ class expense
     delete()
     {
         this.parent().expenseIds.splice(this.indexInParent(), 1);
-        this.parent().calcCurrent();
+        this.primeParent().calcCurrent();
         db.collection("expenses").doc(this.id).delete().then(() => {
             //runs on success
           console.log(this.id + " successfully deleted!");
@@ -23,6 +23,18 @@ class expense
             //runs on failure
           console.error("Error removing document: ", error);
       });
+    }
+
+    primeParent()
+    {
+        let parentAcc = this;
+        let parentTst = this.parent();
+        while (parentTst)
+        {
+            parentAcc = parentAcc.parent();
+            parentTst = parentTst.parent();
+        }
+        return parentAcc
     }
 
     indexInParent()
@@ -50,7 +62,7 @@ class expense
             description: this.description,
             cost: this.cost,
             to: this.to,
-            date: this.date,
+            timestamp: this.timestamp,
             signatory: this.signatory,
             budgId: this.budgId
 

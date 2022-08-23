@@ -20,7 +20,7 @@ async function startExpenseListener()
     await db.collection("expenses").onSnapshot((snapshot) => { // event that runs when database is changed
         expenses.length=0;
         snapshot.forEach((doc) => {
-            const object = new expense(doc.data().name, doc.data().description, doc.data().cost, doc.data().to, doc.data().date, doc.data().signatory, doc.data().budgId);
+            const object = new expense(doc.data().name, doc.data().description, doc.data().cost, doc.data().to, doc.data().signatory, doc.data().timestamp, doc.data().budgId);
             object.id = doc.data().id;
             expenses.push(object);//adding all documents into array
       })
