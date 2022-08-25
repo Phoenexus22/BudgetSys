@@ -17,12 +17,33 @@
     <script src = "src/buttonevents.js"></script>
     <script src = "src/dbreload.js"></script>
     <script src="src/testfuncs.js"></script>
+
+    <link rel="stylesheet" href="src/basic.css"/>
+    <link rel="stylesheet" href="src/main.css"/>
+
         <title>
             Budgeting System
         </title>
     </head>
-    <body>
-        <a>Hello, World!</a>
+    <body class = "nopadding nomargin">
+        <div id = "navbar" class= "rflex fillx b_lightblue centercontent">
+            <h3>budget system</h3>
+        </div>
+        <div id = "mainbody" class = "rflex">
+            <div id = "leftBudgetContainer" class = "cflex yscroll basicborder filly">
+
+            </div>
+            <div id = "datapage" class = "filly noscroll basicborder">
+                <div id = "topdatacontainer" class = "fillx noscroll basicborder">
+                </div>
+                <div id = "tablecontainer" class = "fillx basicborder yscroll">
+                    <table class = "fillx">
+                        <tr><th>Transaction name</th> <th>Description</th> <th>Cost</th> <th>Recipient</th><th>Time/Date</th><th>Transaction Author</th></tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
         <script src="main.js"></script>
     </body>
 </html>

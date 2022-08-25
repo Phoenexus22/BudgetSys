@@ -1,0 +1,25 @@
+#leftBudgetContainer
+{
+    width: 15%;/*b1*/
+}
+#navbar
+{
+    height:7%;/*a1*/
+}
+#mainbody
+{
+    height:93%;/*a2*/
+    width:100%;
+}
+#datapage
+{
+    width:85%;/*b2*/
+}
+#topdatacontainer
+{
+    height:30%;/*c1*/
+}
+#tablecontainer
+{
+    height:70%;/*c2*/
+}

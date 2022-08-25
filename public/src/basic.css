@@ -1,0 +1,111 @@
+html
+{
+font-family:  'Lucida Sans', Arial, sans-serif
+}
+
+* {
+    box-sizing: border-box;
+  }
+
+.cflex
+{
+   display: flex; 
+   flex-direction: column;
+}
+.rflex
+{
+   display: flex; 
+   flex-direction: row;
+}
+
+.centercontent
+{
+    align-items: center;
+    justify-content: center;
+}
+
+.filly
+{
+    height: 100%;
+}
+.fillx
+{
+    width: 100%;
+}
+
+.b_black
+{
+    background-color: black;
+}
+
+.b_lightblue
+{
+    background-color: #00A3ff;
+}
+
+.b_gray
+{
+    background-color: #707070;
+}
+
+.b_white
+{
+    background-color: white;
+}
+
+.noborder {
+    border-style: none;
+  }
+
+.nopadding
+{
+    padding: 0%;
+}
+.nomargin
+{
+    margin: 0%;
+}
+
+.xscroll
+{
+    overflow-x: auto;
+}
+.yscroll
+{
+    overflow-y: auto;
+}
+
+.scroll
+{
+    overflow: auto;
+}
+
+.noxscroll
+{
+    overflow-x: hidden;
+}
+.noyscroll
+{
+    overflow-y: hidden;
+}
+.noscroll
+{
+    overflow: hidden;
+}
+
+.basicborder
+{
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+
+td, th {
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+  
+table {
+    border-collapse: collapse;
+}
