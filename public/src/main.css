@@ -23,3 +23,7 @@
 {
     height:70%;/*c2*/
 }
+#table
+{
+    position: relative;
+}

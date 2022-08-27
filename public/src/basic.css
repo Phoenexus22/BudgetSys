@@ -65,6 +65,30 @@ font-family:  'Lucida Sans', Arial, sans-serif
 {
     margin: 0%;
 }
+.sticky 
+{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+table.stickyhead
+{
+    border-collapse: separate;
+    border-spacing: 0;
+}
+table.stickyhead > thead
+{
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
+
+table.stickyhead>thead th:not:first-child,
+table.stickyhead>tr td:not:first-child
+{
+    border-left: 0px;
+}
 
 .xscroll
 {
