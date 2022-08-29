@@ -26,8 +26,10 @@
         </title>
     </head>
     <body class = "nopadding nomargin">
-        <div id = "navbar" class= "rflex fillx b_lightblue centercontent">
-            <h2>Budget System</h2>
+        <div id = "navbar" class= "rflex fillx b_lightblue spread">
+            <img class = "invert" onclick="backBudget()" src = "src/images/larrow.svg"></img>
+            <h2 class = "tx_white">Budget System</h2>
+            <img class = "invert" onclick="openSettings()" src="src/images/cog.svg"></img> 
         </div>
         <div id = "mainbody" class = "rflex">
             <div id = "leftBudgetContainer" class = "cflex yscroll basicborder filly">
@@ -37,7 +39,7 @@
                 <div id = "topdatacontainer" class = "fillx noscroll basicborder">
                 </div>
                 <div id = "tablecontainer" class = "fillx basicborder yscroll">
-                    <table id = "table" class = "fillx  stickyhead`">
+                    <table id = "table" class = "fillx  stickyhead">
                         <thead>
                         <tr><th>Transaction name</th> <th>Description</th> <th>Cost</th> <th>Recipient</th><th>Time/Date</th><th>Transaction Author</th></tr>
                         </thead>

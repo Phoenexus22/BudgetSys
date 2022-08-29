@@ -17,6 +17,10 @@ font-family:  'Lucida Sans', Arial, sans-serif
    display: flex; 
    flex-direction: row;
 }
+.spread
+{
+    justify-content: space-between;
+}
 
 .centercontent
 {
@@ -51,6 +55,10 @@ font-family:  'Lucida Sans', Arial, sans-serif
 .b_white
 {
     background-color: white;
+}
+.tx_white
+{
+    color: white;
 }
 
 .noborder {
@@ -133,3 +141,35 @@ td, th {
 table {
     border-collapse: collapse;
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #707070;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+
+/*Filter styles*/
+.saturate { filter: saturate(3); }
+.grayscale { filter: grayscale(100%); }
+.contrast { filter: contrast(160%); }
+.brightness { filter: brightness(0.25); }
+.blur { filter: blur(3px); }
+.invert { filter: invert(100%); }
+.sepia { filter: sepia(100%); }
+.huerotate { filter: hue-rotate(180deg); }
+.rss.opacity { filter: opacity(50%); }
