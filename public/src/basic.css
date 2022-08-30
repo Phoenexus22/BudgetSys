@@ -7,6 +7,48 @@ font-family:  'Lucida Sans', Arial, sans-serif
     box-sizing: border-box;
   }
 
+  button
+  {
+    font-family:  'Lucida Sans', Arial, sans-serif;
+    font-weight: 600;
+    border-radius: 2px;
+    border-width: 1px;
+    background-color: #E0E0E0;
+    margin:5px;
+
+    padding-top: 2px;
+    padding-right: 7px;
+    padding-bottom: 2px;
+    padding-left: 7px;
+  }
+  button:hover{background-color:#C0C0C0;}
+  button:focus{background-color:#707070;}
+
+  button.hovclick_lightblue
+  {
+    transition: 0.1s;
+  }
+
+  button.hovclick_lightblue:hover
+  {
+    background-color: #00A3ff;
+    color:#ffffff;
+  }
+
+  button.hovclick_lightblue:focus
+  {
+    background-color: #0082de;;
+    color:#ffffff;
+  }
+
+.width1
+{
+width: 1px;
+}
+.width2
+{
+width: 2px;
+}
 .cflex
 {
    display: flex; 
