@@ -135,6 +135,11 @@ class budget
         }
     }
 
+    percentFull()
+    {
+        return (this.currentCost / this.allocatedCost) * 100;
+    }
+
     //removes all reference to this budget, and deletes its children and expenses
     delete()
     {

@@ -48,3 +48,8 @@ Array.prototype.sortByTimestamp = function()
         console.error("Array elements have no field timestamp");
     }
 }
+
+Array.prototype.addDbObject = function(dbobject)
+{
+    this[this.push(dbobject) -1].firesend();
+}

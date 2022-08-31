@@ -7,6 +7,16 @@ font-family:  'Lucida Sans', Arial, sans-serif
     box-sizing: border-box;
   }
 
+  .semibold
+  {
+    font-weight:600;
+  }
+
+  .margin5
+  {
+    margin: 5px;
+  }
+
   button
   {
     font-family:  'Lucida Sans', Arial, sans-serif;
@@ -22,20 +32,20 @@ font-family:  'Lucida Sans', Arial, sans-serif
     padding-left: 7px;
   }
   button:hover{background-color:#C0C0C0;}
-  button:focus{background-color:#707070;}
+  button:active{background-color:#707070;}
 
-  button.hovclick_lightblue
+  .hovclick_lightblue
   {
     transition: 0.1s;
   }
 
-  button.hovclick_lightblue:hover
+  .hovclick_lightblue:hover
   {
     background-color: #00A3ff;
     color:#ffffff;
   }
 
-  button.hovclick_lightblue:focus
+  .hovclick_lightblue:active
   {
     background-color: #0082de;;
     color:#ffffff;
@@ -79,6 +89,11 @@ width: 2px;
     width: 100%;
 }
 
+.capital
+{
+    text-transform: capitalize;
+}
+
 .b_black
 {
     background-color: black;
@@ -98,10 +113,28 @@ width: 2px;
 {
     background-color: white;
 }
+
 .tx_white
 {
     color: white;
 }
+.tx_yellow
+{
+    color: yellow;
+}
+.tx_orange
+{
+    color: orange;
+}
+.tx_black
+{
+    color: rgb(0, 0, 0);
+}
+.tx_red
+{
+    color: rgb(215, 20, 20);
+}
+
 
 .noborder {
     border-style: none;

@@ -37,8 +37,8 @@
             </div>
             <div id = "datapage" class = "filly noscroll basicborder">
                 <div id = "topdatacontainer" class = "fillx noscroll basicborder cflex centercontent">
-                    <h2 id = "budgetHeader" class = "nomargin">Budget Name</h2>
-                    <a id = "budgetCost">Cost/Allocated</a>
+                    <h2 id = "h2_budgetHeader" class = "nomargin">Budget Name</h2>
+                    <a id = "a_budgetCostandAll">Cost/Allocated</a>
                     <br>
                     <div id = "budgetButtons" class= "rflex centercontent noscroll">
                         <button class="hovclick_lightblue" id = "addexpense" onclick="addExpenseToCurrentBudget()">Add Expense</button>
@@ -46,12 +46,13 @@
                         <button class="hovclick_lightblue" id = "deletebudget" onclick="deleteCurrentBudget()">Delete</button>
                     </div>
                     <br>
-                    <div class="rflex">
-                        <button class="hovclick_lightblue" id = "viewsubbudg" onclick="changeCurrentBudget()">View Sub-Budgets</button>
+                    <div class="rflex basicborder">
+                        <span class = "semibold margin5">Sub Budgets:</span><span id = "span_currentSubbudgCost" class = "semibold margin5">$0</span>
+                        <button class="hovclick_lightblue margin5" id = "viewsubbudg" onclick="changeCurrentBudget()">View Sub-Budgets</button>
                     </div>
                 </div>
                 <div id = "tablecontainer" class = "fillx basicborder yscroll">
-                    <table id = "table" class = "fillx  stickyhead">
+                    <table id = "expensetable" class = "fillx  stickyhead">
                         <thead>
                         <tr><th>Transaction name</th> <th>Description</th> <th>Cost</th> <th>Recipient</th><th>Time/Date</th><th>Transaction Author</th><th>Options</th></tr>
                         </thead>
