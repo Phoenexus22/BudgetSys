@@ -140,6 +140,17 @@ class budget
         return (this.currentCost / this.allocatedCost) * 100;
     }
 
+    costFromChildren()
+    {
+        let accum = 0;
+        let tempchild = this.children();
+        for (let i = 0; i < tempchild.length; i++)
+        {
+            accum+=tempchild[i].currentCost;
+        }
+        return accum;
+    }
+
     //removes all reference to this budget, and deletes its children and expenses
     delete()
     {

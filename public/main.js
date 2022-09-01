@@ -9,7 +9,7 @@ var table_expensetable = document.getElementById("expensetable");
 var div_leftBudgetContainer = document.getElementById("leftBudgetContainer");
 
 var selectedBudget = null;
-
+var viewedBudget = null;
 
 
 startBudgetListener();

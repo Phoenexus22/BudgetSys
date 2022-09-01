@@ -30,5 +30,6 @@
 
 .leftbudget
 {
-    height: 20%;
+    height: 10%;
+    min-height: 10%;
 }
