@@ -7,7 +7,8 @@ function budgetReload()
 
 function remakeBudgetBar()
 {
-    arrayofChoice = (selectedBudget==null)?budgets.primeParents():selectedBudget.children();
+    removeElementsByClass("leftbudget");
+    arrayofChoice = (selectedBudget==null)?budgets.primeParents():searchId(budgets, selectedBudget).children();
     for (let i = 0; i < arrayofChoice.length; i++)
     {
         var tempchild = document.createElement("div");

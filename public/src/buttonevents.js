@@ -7,3 +7,23 @@
         span_currentSubbudgCost.innerHTML = `$${chosenbudget.costFromChildren()}`
         remakeExpenseTable();
     }
+
+    function changeCurrentBudget()
+    {
+        if (searchId(budgets, viewedBudget).children().length > 0){
+        console.log(searchId(budgets, selectedBudget));
+        selectedBudget = viewedBudget;//set input name to ingredient name
+        console.log(searchId(budgets, selectedBudget));
+        remakeBudgetBar();
+        changeBudgetPage(searchId(budgets, selectedBudget).subBudgIds[0]);
+        }
+    }
+
+    function backBudget()
+    {
+        if(selectedBudget != null){
+            selectedBudget = (searchId(budgets, selectedBudget).parent()==null)?null:searchId(budgets, selectedBudget).parent().id;
+            remakeBudgetBar();
+            changeBudgetPage((selectedBudget==null)?budgets.primeParents()[0].id:searchId(budgets, selectedBudget).subBudgIds[0]);
+        }
+    }
