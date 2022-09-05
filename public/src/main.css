@@ -28,6 +28,15 @@
     position: relative;
 }
 
+#addbox
+{
+    background-color: white;
+    width: 50%;
+    height: 80%;
+    margin-left: 25%;
+    margin-top: 5%;
+}
+
 .leftbudget
 {
     height: 10%;
