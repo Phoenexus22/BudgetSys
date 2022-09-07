@@ -37,6 +37,9 @@
                     <div id = "addexpensebox">
                     </div>
                     <div id = "addbudgetbox" class = "cflex centercontent">
+                        <div class = "rflex rightcontent fillx">
+                            <img class = "overlayx" onclick="toggleNewBudget()" src="src/images/x.svg"></img>
+                        </div> 
                         <h1>New Budget</h1>
                         Name:
                         <input id  = "newbudgetname" placeholder="Name"></input>
@@ -48,7 +51,9 @@
                         <input id  = "newbudgetalloc" placeholder="Budget Allocation"></input>
                         <br>
                         Renewal Date:
-                        <input type="date"></input>
+                        <input type="date" id="newbudgetdate"></input>
+                        <br>
+                        <button class = "hovclick_lightblue" onclick = "submitNewBudget()">Submit</button>
                     </div>
                 </div>
             </div>
@@ -62,7 +67,7 @@
                     <br>
                     <div id = "budgetButtons" class= "rflex centercontent noscroll">
                         <button class="hovclick_lightblue" id = "addexpense" onclick="addExpenseToCurrentBudget()">Add Expense</button>
-                        <button class="hovclick_lightblue" id = "addsubbudg" onclick="addSubbudgToCurrentBudget()">Add Sub-Budget</button>
+                        <button class="hovclick_lightblue" id = "addsubbudg" onclick="toggleNewBudget()">Add Sub-Budget</button>
                         <button class="hovclick_lightblue" id = "deletebudget" onclick="deleteCurrentBudget()">Delete</button>
                     </div>
                     <br>

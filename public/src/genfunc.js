@@ -42,3 +42,7 @@ function removeElementsByClass(className)
         elements[0].parentNode.removeChild(elements[0]);
     }
  }
+
+ function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+  }

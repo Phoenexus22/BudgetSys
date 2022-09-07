@@ -36,6 +36,15 @@
     margin-left: 25%;
     margin-top: 5%;
 }
+#addbudgetbox
+{
+    display:none;
+}
+.overlayx
+{
+    height: 3rem;
+    width: 3rem;
+}
 
 .leftbudget
 {

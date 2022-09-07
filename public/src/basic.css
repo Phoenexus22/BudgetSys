@@ -84,6 +84,11 @@ width: 2px;
     align-items: center;
     justify-content: center;
 }
+.rightcontent
+{
+    align-items: flex-end;
+    justify-content:flex-end;
+}
 
 .filly
 {
@@ -139,7 +144,6 @@ width: 2px;
 {
     color: red;
 }
-
 
 .noborder {
     border-style: none;
@@ -256,7 +260,7 @@ table {
 
 .overlay {
     position: fixed; /* Sit on top of the page content */
-    display: block; /* Hidden by default */
+    display: none; /* Hidden by default */
     width: 100%; /* Full width (cover the whole page) */
     height: 100%; /* Full height (cover the whole page) */
     top: 0;

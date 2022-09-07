@@ -27,3 +27,17 @@
             changeBudgetPage((selectedBudget==null)?budgets.primeParents()[0].id:searchId(budgets, selectedBudget).subBudgIds[0]);
         }
     }
+
+    function submitNewBudget()
+    {
+        let parent = searchId(budgets, viewedBudget);
+        parent.addChild(new budget(input_newbudgetname.value, input_newbudgetdesc.value, input_newbudgetalloc.value, input_newbudgetdate.value));
+        input_newbudgetname.value = input_newbudgetdesc.value = input_newbudgetalloc.value = input_newbudgetdate.value = "";
+        toggleNewBudget();
+    }
+
+    function toggleNewBudget()
+    {
+        (div_addbudgetbox.style.display ==  "none")? div_addbudgetbox.style.display = "flex":div_addbudgetbox.style.display = "none";
+        (div_addoverlay.style.display == "none")? div_addoverlay.style.display = "block":div_addoverlay.style.display = "none";
+    }
