@@ -3,6 +3,7 @@ function budgetReload()
     //remove all elements with classes indicating they are dependent on budget data
     removeElementsByClass("budgDpd"); 
     remakeBudgetBar();
+    changeBudgetPage(viewedBudget);
 }
 
 function remakeBudgetBar()

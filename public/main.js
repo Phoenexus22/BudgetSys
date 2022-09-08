@@ -11,6 +11,13 @@ var div_leftBudgetContainer = document.getElementById("leftBudgetContainer");
 
 var div_addoverlay  = document.getElementById("addoverlay");
 
+var div_addexpensebox = document.getElementById("addexpensebox");
+var input_newexpensename = document.getElementById("newexpensename");
+var input_newexpensedesc = document.getElementById("newexpensedesc");
+var input_newexpensecost = document.getElementById("newexpensecost");
+var input_newexpenseto = document.getElementById("newexpenseto");
+var input_newexpensesignatory = document.getElementById("newexpensesignatory");
+
 var div_addbudgetbox = document.getElementById("addbudgetbox");
 var input_newbudgetname = document.getElementById("newbudgetname");
 var input_newbudgetdesc = document.getElementById("newbudgetdesc");
@@ -26,3 +33,4 @@ delay(1000).then(() => changeBudgetPage(budgets.primeParents()[0].id));
 
 div_addoverlay.style.display = "none";
 div_addbudgetbox.style.display =  "none";
+div_addexpensebox.style.display =  "none";

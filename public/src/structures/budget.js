@@ -23,12 +23,12 @@ class budget
         {
             let currBudg = this.children()[i];
             currBudg.calcCurrent();
-            this.currentCost+=currBudg.currentCost;
+            this.currentCost+=parseInt(currBudg.currentCost, 10);
         }
         console.log(this.expenses());
         for(let i = 0; i < this.expenses().length; i++)
         {
-            this.currentCost+=this.expenses()[i].cost;
+            this.currentCost+=parseInt(this.expenses()[i].cost, 10);
         }
         await this.firesend();
     }
@@ -150,6 +150,18 @@ class budget
         }
         return accum;
     }
+
+    allocFromChildren()
+    {
+        let accum = 0;
+        let tempchild = this.children();
+        for (let i = 0; i < tempchild.length; i++)
+        {
+            accum+=parseInt(tempchild[i].allocatedCost, 10);
+        }
+        return accum;
+    }
+
 
     //removes all reference to this budget, and deletes its children and expenses
     delete()
