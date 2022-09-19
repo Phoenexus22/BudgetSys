@@ -26,6 +26,7 @@ var input_newbudgetdate = document.getElementById("newbudgetdate");
 
 var selectedBudget = null;
 var viewedBudget = null;
+var budgetToggleVar = null;
 startBudgetListener();
 startExpenseListener();
 console.log(budgets.primeParents());

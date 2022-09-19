@@ -37,6 +37,24 @@ function remakeBudgetBar()
         tempchild.appendChild(tempBudgCostAlloc);
         div_leftBudgetContainer.appendChild(tempchild);
     }
+    var plusexpense = document.createElement("div");
+    plusexpense.classList.add("fillx");
+    plusexpense.classList.add("cflex");
+    plusexpense.classList.add("budgDpd");
+    plusexpense.classList.add("centercontent");
+    plusexpense.classList.add("basicborder");
+    plusexpense.classList.add("leftbudget");
+    plusexpense.classList.add("hovclick_lightblue");
+
+    var plusimg = document.createElement("img");
+    plusimg.src = "src/images/plus.svg";
+    plusimg.style.height = "10rem";
+    plusimg.style.width = "4rem";
+    plusexpense.appendChild(plusimg);
+
+    plusexpense.addEventListener('click', function (){toggleNewBudget(); budgetToggleVar = selectedBudget});
+
+    div_leftBudgetContainer.appendChild(plusexpense);
 }
 
 

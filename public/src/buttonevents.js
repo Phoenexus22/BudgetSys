@@ -39,6 +39,8 @@
         }
         parent.addChild(new budget(input_newbudgetname.value, input_newbudgetdesc.value, input_newbudgetalloc.value, input_newbudgetdate.value));
         input_newbudgetname.value = input_newbudgetdesc.value = input_newbudgetalloc.value = input_newbudgetdate.value = "";
+
+        budgetToggleVar = viewedBudget;
         toggleNewBudget();
     }
 
