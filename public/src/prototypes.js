@@ -53,3 +53,4 @@ Array.prototype.addDbObject = function(dbobject)
 {
     this[this.push(dbobject) -1].firesend();
 }
+var debugMode = false;

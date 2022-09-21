@@ -8,6 +8,7 @@ function budgetReload()
 
 function remakeBudgetBar()
 {
+    if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
     removeElementsByClass("leftbudget");
     arrayofChoice = (selectedBudget==null)?budgets.primeParents():searchId(budgets, selectedBudget).children();
     for (let i = 0; i < arrayofChoice.length; i++)
@@ -52,7 +53,7 @@ function remakeBudgetBar()
     plusimg.style.width = "4rem";
     plusexpense.appendChild(plusimg);
 
-    plusexpense.addEventListener('click', function (){toggleNewBudget(); budgetToggleVar = selectedBudget});
+    plusexpense.addEventListener('click', function (){budgetToggleVar = selectedBudget; toggleNewBudget();});
 
     div_leftBudgetContainer.appendChild(plusexpense);
 }
@@ -60,12 +61,14 @@ function remakeBudgetBar()
 
 function expenseReload()
 {
+    if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
 //remove all elements with classes indicating they are dependent on expense data
 removeElementsByClass("expenseDpd"); 
 }
 
 function remakeExpenseTable()
 {
+    if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
     let curbudg  = searchId(budgets, viewedBudget);
     let expn = curbudg.expenses();
     removeElementsByClass("expenseTableRow");
@@ -98,6 +101,16 @@ function remakeExpenseTable()
         let auth = document.createElement("td");
         auth.innerHTML = expn[i].signatory;
         row.appendChild(auth)
+
+        let options = document.createElement("td");
+        let deletebutton = document.createElement("img");
+        deletebutton.src = "src/images/trash.svg"
+        deletebutton.value = expn[i].id;
+        deletebutton.addEventListener('click', function (){searchId(expenses, this.value).delete()});
+        options.appendChild(deletebutton);
+        row.appendChild(options);
+
+
 
         table_expensetable.appendChild(row);
     }

@@ -43,7 +43,7 @@
                         <input id  = "newexpensename" placeholder="Name"></input>
                         <br>
                         Description:
-                        <textarea id = "newexpensedesc"></textarea>
+                        <textarea id = "newexpensedesc" placeholder="A short Description of the Transaction"></textarea>
                         <br>
                         Cost:
                         <input id  = "newexpensecost" placeholder="Transaction cost" type ='number'></input>
@@ -68,7 +68,7 @@
                         <textarea id = "newbudgetdesc"></textarea>
                         <br>
                         Allocated Budget:
-                        <input id  = "newbudgetalloc" placeholder="Budget Allocation" typpe="number"></input>
+                        <input id  = "newbudgetalloc" placeholder="Budget Allocation" type="number"></input>
                         <br>
                         Renewal Date:
                         <input type="date" id="newbudgetdate"></input>
@@ -87,7 +87,7 @@
                     <br>
                     <div id = "budgetButtons" class= "rflex centercontent noscroll">
                         <button class="hovclick_lightblue" id = "addexpense" onclick="toggleNewExpense()">Add Expense</button>
-                        <button class="hovclick_lightblue" id = "addsubbudg" onclick="toggleNewBudget()">Add Sub-Budget</button>
+                        <button class="hovclick_lightblue" id = "addsubbudg" onclick="inPageBudgetCall()">Add Sub-Budget</button>
                         <button class="hovclick_lightblue" id = "deletebudget" onclick="deleteBudget()">Delete</button>
                     </div>
                     <br>

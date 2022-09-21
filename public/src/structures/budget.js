@@ -18,6 +18,7 @@ class budget
     //calculates the cost of this budget and all sub budgets
     async calcCurrent()
     {
+        if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
         this.currentCost = 0;
         for(let i = 0; i < this.children().length; i++)
         {
@@ -37,6 +38,7 @@ class budget
     //returns true when current cost is less than allocated cost
     inBlack()
     {
+        if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
         return (this.currentCost <= this.allocatedCost);
     }
 
@@ -45,12 +47,14 @@ class budget
     //returns the parent object of this budget, defined by the parentBudgId
     parent()
     {
+        if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
         return searchId(budgets, this.parentBudgId);
     }
 
     //returns the parent of the parent of the... you get the idea
     primeParent()
     {
+        if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
         let parentAcc = this;
         let parentTst = this.parent();
         while (parentTst)
@@ -64,6 +68,7 @@ class budget
     //returns the index of this objects id in the parent's subBudgIds
     indexInParent()
     {
+        if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
         let parentChildren = this.parent().children();
         for(let i = 0; i < parentChildren.length; i++)
         {
@@ -75,6 +80,7 @@ class budget
     //returns the array of children for this object
     children()
     {
+        if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
         let temparray  = [];
         for(let i = 0; i < this.subBudgIds.length;i++ )
         {   
@@ -86,6 +92,7 @@ class budget
     //adds a subbudget to a budget
     async addChild(child)
     {
+        if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
         this.subBudgIds.push(child.id);
         child.parentBudgId = this.id;
         await child.firesend();
@@ -96,6 +103,7 @@ class budget
     //removes all subbudgets
     purgeChildren()
     {
+        if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
         let children = this.children();
         for (let i = 0; i < children.length; i++)
         {
@@ -107,6 +115,7 @@ class budget
     //returns the array of expenses for this object 
     expenses()
     {
+        if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
         let temparray  = [];
         for(let i = 0; i < this.expenseIds.length;i++ )
         {   
@@ -118,6 +127,7 @@ class budget
     //adds an expense to this budget
     async addExpense(expense)
     {
+        if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
         this.expenseIds.push(expense.id);
         expense.budgId = this.id;
         await expense.firesend();
@@ -128,6 +138,7 @@ class budget
     //removes all expenses from this budget
     purgeExpenses()
     {
+        if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
         let expenses = this.expenses();
         for (let i = 0; i < expenses.length; i++)
         {
@@ -137,11 +148,13 @@ class budget
 
     percentFull()
     {
+        if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
         return (this.currentCost / this.allocatedCost) * 100;
     }
 
     costFromChildren()
     {
+        if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
         let accum = 0;
         let tempchild = this.children();
         for (let i = 0; i < tempchild.length; i++)
@@ -153,6 +166,7 @@ class budget
 
     allocFromChildren()
     {
+        if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
         let accum = 0;
         let tempchild = this.children();
         for (let i = 0; i < tempchild.length; i++)
@@ -166,6 +180,7 @@ class budget
     //removes all reference to this budget, and deletes its children and expenses
     delete()
     {
+        if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
         this.purgeExpenses();
         this.purgeChildren();
         if(this.parent()) this.parent().subBudgIds.splice(this.indexInParent(), 1);
@@ -182,6 +197,7 @@ class budget
     //send the copy of this object to the database
     async firesend()
     {
+        if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
         await db.collection("budgets").doc(this.id).set(
         {
             id: this.id,
