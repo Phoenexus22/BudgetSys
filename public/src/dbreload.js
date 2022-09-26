@@ -61,9 +61,10 @@ function remakeBudgetBar()
 
 function expenseReload()
 {
-    if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
+    //if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
 //remove all elements with classes indicating they are dependent on expense data
-removeElementsByClass("expenseDpd"); 
+removeElementsByClass("expenseDpd");
+remakeExpenseTable(); 
 }
 
 function remakeExpenseTable()
@@ -106,7 +107,7 @@ function remakeExpenseTable()
         let deletebutton = document.createElement("img");
         deletebutton.src = "src/images/trash.svg"
         deletebutton.value = expn[i].id;
-        deletebutton.addEventListener('click', function (){searchId(expenses, this.value).delete()});
+        deletebutton.addEventListener('click', function (){if (confirm("Are you sure you want to delete this transaction?"))searchId(expenses, this.value).delete()});
         options.appendChild(deletebutton);
         row.appendChild(options);
 

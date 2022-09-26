@@ -5,6 +5,7 @@
         let chosenbudget = searchId(budgets, id);
         h2_budgetHeader.innerHTML  = chosenbudget.name; 
         a_budgetCostandAll.innerHTML = `$${chosenbudget.currentCost}/$${chosenbudget.allocatedCost}`;
+        a_desc.innerHTML = `${chosenbudget.description}`;
         console.log(chosenbudget.allocFromChildren());
         span_currentSubbudgCost.innerHTML = `$${chosenbudget.costFromChildren()}/$${chosenbudget.allocFromChildren()}`
         remakeExpenseTable();
@@ -88,7 +89,7 @@
     }
 
     function deleteBudget()
-    {if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
+    {//if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
         if (!confirm("Are you sure you want to delete this budget?\nthis will remove all transactions and sub-budgets")) return 0;
         searchId(budgets, viewedBudget).delete();
     }

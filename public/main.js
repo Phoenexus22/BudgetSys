@@ -4,6 +4,7 @@ var expenses = [];
 
 var h2_budgetHeader = document.getElementById("h2_budgetHeader");
 var a_budgetCostandAll = document.getElementById("a_budgetCostandAll");
+var a_desc = document.getElementById("a_desc");
 var span_currentSubbudgCost = document.getElementById("span_currentSubbudgCost");
 var table_expensetable = document.getElementById("expensetable");
 var div_leftBudgetContainer = document.getElementById("leftBudgetContainer");

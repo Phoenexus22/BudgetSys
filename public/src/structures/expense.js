@@ -16,9 +16,10 @@ class expense
     //removes this class and all refrences to it
     delete()
     {
-        if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
+        //if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
         this.parent().expenseIds.splice(this.indexInParent(), 1);
         this.primeParent().calcCurrent();
+        
         db.collection("expenses").doc(this.id).delete().then(() => {
             //runs on success
           console.log(this.id + " successfully deleted!");
@@ -31,7 +32,7 @@ class expense
     //returns the parent of the parent of the... you get the idea
     primeParent()
     {
-        if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
+        //if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
         let parentAcc = this;
         let parentTst = this.parent();
         while (parentTst)
@@ -45,7 +46,7 @@ class expense
     //returns the index of this objects id in the parent's subBudgIds
     indexInParent()
     {
-        if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
+        //if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
         let parentChildren = this.parent().expenses();
         for(let i = 0; i < parentChildren.length; i++)
         {
@@ -58,7 +59,7 @@ class expense
     //returns the parent object of this budget, defined by the budgId
     parent()
     {
-        if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
+        //if(debugMode)console.log(`${arguments.callee.name}, ${this}`);
         return searchId(budgets, this.budgId);
     }
 
